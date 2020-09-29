@@ -1,0 +1,402 @@
+{% extends 'zencheck/home.html'%}
+{% load static %}
+{% block content %}
+
+<head>
+  <link href=" {% static 'assets/css/theme.css' %} " rel="stylesheet" type="text/css" media="all" />
+  <link href="http://cdn.pydata.org/bokeh/release/bokeh-2.0.1.min.css" rel="stylesheet" type="text/css">
+ <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.1.min.css" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="http://cdn.pydata.org/bokeh/release/bokeh-2.0.1.min.js"></script>
+ <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-2.0.1.min.js"></script>
+
+{{ script | safe }}
+
+</head>
+
+    {% if user.is_authenticated %}
+        {% if completed_pulsecheck is True %}
+
+<div class="container dashboard-info-text">
+  <p class="text">Below are the results of your most recent pulse check.
+    If it's been more than 2 weeks since completion, you can re-take the pulse check <a
+      href="{% url 'zencheck:pulsecheck' %}" class="text">here.</a>
+  </p>
+</div>
+  
+<div class="dashboard-content">
+<div class="leftpane">
+
+    <div class="warning-section">
+        <!-- Warning Section  -->
+    <div class="container" >
+     <h2> Warnings </h2>
+        <div class="row">
+
+{% if lunch_warning is True %}
+    <div class="col-md-5">
+      <div class="box box-border">
+     <img src=" {% static 'assets/icons/sandwich.svg' %} " class="mb-4 home-icon">
+        <h6>Skipping lunch</h6>
+      </div>
+    </div>
+{% endif %}
+
+
+{% if debt_warning is True %}
+    <div class="col-md-5">
+      <div class="box box-border">
+<img src=" {% static 'assets/icons/loan.svg' %} " class="mb-4 home-icon">
+        <h6>Restrictive debt</h6>
+      </div>
+    </div>
+{% endif %}
+    
+{% if lonely_warning is True %}
+    <div class="col-md-5">
+      <div class="box box-border">
+        <img src=" {% static 'assets/icons/quarantine.svg' %} " class="mb-4 home-icon">
+        <h6>Feeling alone</h6>
+      </div>
+    </div>
+{% endif %}
+
+{% if drinking_warning is True %}
+    <div class="col-md-5">
+      <div class="box box-border">
+        <img src=" {% static 'assets/icons/champagne-glass.svg' %} " class="mb-4 home-icon">
+        <h6>Drinking excessively</h6>
+      </div>
+    </div>
+    {% endif %}
+
+
+{% if distracted_warning is True %}
+     <div class="col-md-5">
+      <div class="box box-border">
+        <img src=" {% static 'assets/icons/dizziness.svg' %} " class="mb-4 home-icon">
+        <h6>Trouble concentrating</h6>
+      </div>
+    </div>
+{% endif %}
+
+{% if lunch_warning is False and debt_warning is False and lonely_warning is False and drinking_warning is False and distracted_warning is False %}
+     <div class="col-md-5">
+      <div class="box box-border">
+        <h6>You have no current warnings, remember to stay healthy and take care of yourself and others</h6>
+      </div>
+    </div>
+{% endif %}
+
+  </div>
+</div>
+</div>
+
+<div class="container">
+    <h2> Recommendations </h2>
+    <div class="row">
+        <!-- Recommendation Section -->
+
+{% if wlb_flag is True %}
+     <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Improve your work-life balance</h5>
+        <h6> Set a time for when you will switch off your business email and mobile phone each day. </h6>
+      </div>
+    </div>
+            {% endif %}
+
+{% if fh_flag is True %}
+        <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Looking for financial advice?</h5>
+        <h6> Seek support during times of financial difficulty. Organisations like 
+        <a href='https://yourbusinessangels.com.au' target="_blank"> Your Business Angels </a> can help you find solutions and provide expert advice.</h6>
+      </div>
+    </div>
+            {% endif %}
+
+{% if sn_flag is True %}
+    <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Build a support network</h5>
+        <h6> Find someone to talk things through– this could be a close friend, a family member or another small business owner. </h6>
+      </div>
+    </div>
+            {% endif %}
+  
+    {% if ph_flag is True %}
+    <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Consider improving your physical routine</h5>
+        <h6> Build physical activity into your day and make some time for exercise </h6>
+      </div>
+    </div>
+            {% endif %}
+
+    {% if eh_flag is True %}
+    <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Make use of mindfulness</h5>
+        <h6> Download a meditation app, like <a href="https://www.smilingmind.com.au/smiling-mind-app"> Smiling Mind</a>, for your phone or tablet. Starting or finishing the day with a mindfulness meditation may help to manage stress. </h6>
+      </div>
+    </div>
+            {% endif %}
+
+    {% if wlb_flag is False and fh_flag is False and sn_flag is False and ph_flag is False and eh_flag is False %}
+                <!-- <h2>You appear to be very healthy right now, keep up the good work!</h2> -->
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+
+<div class="rightpane">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-4">
+                    <h2> ZenScore </h2>
+                </div>
+
+            <div class="col-6 col-sm-4">  
+                <div class="col-lg-6 wow move-up">
+                        <div class="score-bar--two section-space--mb_60">
+                            <!-- Start Single Progress Charts -->
+                            <div class="score-charts">
+                                <h6 class="heading ">Financial Condition</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="background: #EC0000; width:{{ fh_pct }}%; background:{% if fh_pct < 50 %}#EC0000{% elif fh_pct >= 50 and fh_pct < 75 %} #FEBF01 {% elif fh_pct >= 75 %} #6CBA86 {% endif %}">
+                                            <span class="percent-label">{{ fh_pct }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                            <div class="score-charts">
+                                <h6 class="heading ">Support Network</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" 
+                                        style="width:{{ sn_pct }}%; background:{% if sn_pct < 50 %}#EC0000{% elif sn_pct >= 50 and sn_pct < 75 %} #FEBF01 {% elif sn_pct >= 75 %} #6CBA86 {% endif %}">
+                                        <span class="percent-label">{{ sn_pct }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="score-charts">
+                                <h6 class="heading ">Physical Health</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" 
+                                        style="width:{{ ph_pct }}%; background:{% if ph_pct < 50 %}#EC0000{% elif ph_pct >= 50 and ph_pct < 75 %} #FEBF01 {% elif ph_pct >= 75 %} #6CBA86 {% endif %}">
+                                        <span class="percent-label">{{ ph_pct }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="score-charts">
+                                <h6 class="heading ">Emotional Health</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="width:{{ eh_pct }}%; background:{% if eh_pct < 50 %}#EC0000{% elif eh_pct >= 50 and eh_pct < 75 %} #FEBF01 {% elif eh_pct >= 75 %} #6CBA86 {% endif %}"> 
+                                            <span class="percent-label">{{ eh_pct }}%</span>
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="score-charts">
+                                <h6 class="heading ">Work-life Balance</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="width:{{ wlb_pct }}%; 
+                                        background:{% if wlb_pct < 50 %}#EC0000{% elif wlb_pct >= 50 and wlb_pct < 75 %} #FEBF01 {% elif wlb_pct >= 75 %} #6CBA86 {% endif %}">
+                                        <span class="percent-label">{{ wlb_pct }}%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <h2> Historical Overview </h2>
+                {{div| safe}}
+            </div>
+</div>
+</div>
+
+
+        {% else %}
+            <h2>Complete your first Pulse Check to get your dashboard</h2>
+            <a href="{% url 'zencheck:pulsecheck' %}">Click Here!</a>
+        {% endif %}
+
+    {% else %}
+
+        <div class="dashboard-content-blur" id="blur">
+            <div class="leftpane">
+        <!-- Warning Section -->
+    <div class="container">
+     <h2> Warnings </h2>
+        <div class="row">
+
+    <div class="col-md-5">
+      <div class="box box-border">
+     <img src=" {% static 'assets/icons/sandwich.svg' %} " class="mb-4 home-icon">
+        <h6>Skipping lunch</h6>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="box box-border">
+<img src=" {% static 'assets/icons/loan.svg' %} " class="mb-4 home-icon">
+        <h6>Restrictive debt</h6>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="box box-border">
+        <img src=" {% static 'assets/icons/quarantine.svg' %} " class="mb-4 home-icon">
+        <h6>Feeling alone</h6>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="box box-border">
+        <img src=" {% static 'assets/icons/champagne-glass.svg' %} " class="mb-4 home-icon">
+        <h6>Drinking excessively</h6>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+        <!-- Recommendation Section -->
+<div class="container">
+    <h2> Recommendations </h2>
+    <div class="row">
+
+     <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Improve your Work-Life balance"</h5>
+        <h6> Set a time for when you will switch off your business email and mobile phone each day. </h6>
+      </div>
+    </div>
+
+        <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Looking for financial advice?</h5>
+        <h6> Seek support during times of financial difficulty. Organisations like 
+        <a href='www.kebab.com'> Your Business Angels </a> can help you find solutions and provide expert advice.</h6>
+      </div>
+    </div>
+
+    <div class="col-md-10">
+      <div class="box reco-box-border">
+        <h5>Build a support network</h5>
+        <h6> Find someone to talk things through– this could be a close friend, a family member or another small business owner. </h6>
+      </div>
+    </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="rightpane">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-sm-4">
+                    <h2> ZenScore </h2>
+                </div>
+
+            <div class="col-6 col-sm-4">  
+                <div class="col-lg-6 wow move-up">
+                        <div class="score-bar--two section-space--mb_60">
+                            <!-- Start Single Progress Charts -->
+                            <div class="score-charts">
+                                <h6 class="heading ">Financial Condition</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="background: #EC0000; width:40%; background:#EC0000"></div>
+                                    </div>
+                                </div>
+                            </div>
+                      
+                            <div class="score-charts">
+                                <h6 class="heading ">Support Network</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" 
+                                        style="width:70%; background:#FEBF01">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="score-charts">
+                                <h6 class="heading ">Physical Health</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" 
+                                        style="width:33%; background:#EC0000">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="score-charts">
+                                <h6 class="heading ">Emotional Health</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="width:50%; background:#FEBF01"> 
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                              <div class="score-charts">
+                                <h6 class="heading ">Work-life Balance</h6>
+                                <div class="score__two">
+                                    <div class="score">
+                                        <div class="score-bar" role="progressbar" style="width:33%; 
+                                        background:#EC0000">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+
+
+        <div id="popup">
+            <h3> <a href="{% url 'zencheck:signup' %}"> Create an account today </a> to complete a pulse check and view a full dashboard of recommendations!  </h3>
+            </div>
+
+
+
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+         

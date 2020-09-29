@@ -1,0 +1,342 @@
+{% extends 'zencheck/home.html'%}
+{% load static %}
+{% block content %}
+
+<body>
+  
+  <section class="resources-section">
+    <div class="container">
+      
+      <p class="resources-welcome">Welcome to our resource hub, where you can find the relevant help & information you need</p>
+
+      <div class="row text-center">
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border resources-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/headache.svg' %} " alt="SBOs" class="mb-4 resources-icon">
+            <h6 class="resources-subtext">Stress Management </h6>
+            <a href="#sm" class="btn home-box-btn resource-box-btn">Visit Here</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border resources-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/online-learning.svg' %} " alt="Supporters" class="mb-4 resources-icon">
+            <h6 class="resources-subtext">Financial Support & Advice</h6>
+            <a href="#fss" class="btn home-box-btn resource-box-btn">Visit Here</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border resources-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/chat.svg' %} " alt="ReachOut" class="mb-4 resources-icon">
+            <h6 class="resources-subtext">Speak to Someone Now</h6>
+            <a href="#sts" class="btn home-box-btn resource-box-btn">Visit Here</a>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+<!-- Stress Management -->
+<h2 class="resources-sm" id="sm"> Stress Management </h2>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-1.png' %}">
+        <a href="https://www.beyondblue.org.au/get-support/staying-well/reducing-stress" target="blank">
+          <div class="h-100 sm">
+            <h5 class="card-title">Seven Ways to Reduce Stress </h5>
+          </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Beyond Blue | Web Article</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-2.png' %}">
+        <a href="https://www.headspace.com/meditation/stress" target="blank">
+        <div class="h-100 sm">
+          <h5 class="card-title">Effective meditation to overcome stress </h5>
+        </div>
+      </a>
+        <div class="card-footer">
+          <small class="text-muted">Headspace | Web Article</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-3.png' %}">
+        <a href="https://soundcloud.com/everymind-au/building-support-networks-and?in=everymind-au/sets/ahead-for-business-podcast-series" target="blank">
+          <div class="h-100 sm">
+            <h5 class="card-title">Podcast: Planning ahead and planning for time off </h5>
+          </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Everymind AU | Podcast</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-4.png' %}">
+        <a href="https://mensline.org.au/phone-and-online-counselling/" target="blank">
+        <div class="h-100 sm">
+          <h5 class="card-title"> Free Phone and Online Counselling </h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">MensLine Blue | Web Article</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-5.png' %}">
+        <a href="https://www.lifeline.org.au/get-help/information-and-support/covid-19/" target="blank">
+        <div class="h-100 sm">
+          <h5 class="card-title">Mental health and wellbeing during the COVID-19 outbreak</h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Lifeline | Web Article</small>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\sm-6.png' %}">
+        <a href="https://vimeo.com/294456292" target="blank">
+        <div class="h-100 sm">
+          <h5 class="card-title">Case Study: Business owner, Peter Godden, on connecting with others </h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Everymind AU | Case Study</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Intersection divider -->
+
+<div class="resources-box">
+</div>
+
+<!-- Financial Support & Advice -->
+<h2 class="resources-fss" id="fss"> Financial Support & Advice </h2>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-1.png' %}">
+        <a href="https://www.sbs.com.au/news/australian-small-businesses-to-get-loan-relief-amid-covid-19-outbreak" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">Australian small businesses to get loan relief amid COVID-19 outbreak </h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">SBS | Media Release</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-2.png' %}">
+        <a href="https://www.amp.com.au/insights/COVID-19/coronavirus-stimulus-package-smes" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">COVID-19 stimulus packages and financial support for small business with AMP </h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">AMP | Web Article</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-3.png' %}">
+        <a href="https://www.ato.gov.au/General/COVID-19/Support-for-businesses-and-employers/" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">COVID-19 support for businesses and employers </h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">ATO | Web Article</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-4.png' %}">
+        <a href="https://www.service.nsw.gov.au/transaction/apply-small-business-covid-19-recovery-grants" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">Apply for a small business COVID-19 recovery grant with Service NSW</h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Service NSW | Online Application</small>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-5.png' %}">
+        <a href="https://www.nab.com.au/common/forms/coronavirus-contact-form" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">NAB Coronavirus (COVID-19) support package</h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">NAB | Contact Form</small>
+        </div>
+      </div>
+    </div>
+    
+    
+    <div class="col-md-4">
+      <div class="card card-body flex-fill">
+        <img class="card-img-top" src="{% static 'assets\img\resources-img\fss-6.png' %}">
+        <a href="https://business.gov.au/Risk-management/Emergency-management/Coronavirus-information-and-support-for-business" target="blank">
+        <div class="h-100 fss">
+          <h5 class="card-title">Coronavirus information and support for business</h5>
+        </div>
+        </a>
+        <div class="card-footer">
+          <small class="text-muted">Aus Gov Business | Web Article</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Diagonal Splitter -->
+
+<div class="resources-box-down">
+</div>
+
+<!-- Speak to Someone Now -->
+<h2 class="resources-sts" id="sts"> Speak to Someone Now </h2>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h4 class=resources-title-contact>
+        Feeling anxious or depressed
+      </h4>
+      <div class="resources-contact">
+        <div class="row">
+          <div class="col-md-6 contact-svg">
+            <img src="{% static 'assets\icons\resources-contact-logo\beyondblue.svg' %}" alt="beyond blue" >
+          </div>
+          <div class="col-md-6">
+            <h5 class="resources-contact-website">
+              <a href="https://beyondblue.org.au" target="blank">
+                beyondblue.org.au
+              </a>
+            </h5>
+            <br>
+            <h5 class="resources-contact-number">1300 22 46 36</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class=resources-title-contact>
+        Anyone having a personal crisis
+      </h4>
+      <div class="resources-contact">
+        <div class="row">
+          <div class="col-md-6 contact-svg">
+            <img src="{% static 'assets\icons\resources-contact-logo\lifeline.svg' %}" alt="lifeline" >
+          </div>
+          <div class="col-md-6">
+            <h5 class="resources-contact-website">
+              <a href="https://lifeline.org.au" target="blank">
+                lifeline.org.au
+              </a>
+            </h5>
+            <br>
+            <h5 class="resources-contact-number">13 11 14</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class=resources-title-contact>
+        Anyone thinking about suicide
+      </h4>
+      <div class="resources-contact">
+        <div class="row">
+          <div class="col-md-6 contact-svg">
+            <img src="{% static 'assets\icons\resources-contact-logo\suicidecallback.svg' %}" alt="suicidecallback" >
+          </div>
+          <div class="col-md-6">
+            <h5 class="resources-contact-website">
+              <a href="https://sucidecallback.org" target="blank">
+                sucidecallback.org
+              </a>
+            </h5>
+            <br>
+            <h5 class="resources-contact-number">1300 659 467</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <h4 class=resources-title-contact>
+        Men with emotional/relationship concern
+      </h4>
+      <div class="resources-contact">
+        <div class="row">
+          <div class="col-md-6 contact-svg">
+            <img src="{% static 'assets\icons\resources-contact-logo\mensline.svg' %}" alt="mensline" >
+          </div>
+          <div class="col-md-6">
+            <h5 class="resources-contact-website">
+              <a href="https://mensline.org.au" target="blank">
+                mensline.org.au
+              </a>
+            </h5>
+            <br>
+            <h5 class="resources-contact-number">1300 78 99 78</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+    <script type="text/javascript" src=" {% static 'assets/js/bootstrap.js' %} "></script>
+</div>
+</section>
+
+</body>
+
+{% endblock %}

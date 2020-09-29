@@ -1,0 +1,23 @@
+{% extends 'zencheck/home.html'%}
+{% load static %}
+{% block content %}
+    <form method=post>
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="login-fieldWrapper">
+            {{ field.errors }}
+            {{ field.label_tag }} 
+            {{ field }}
+            {% if field.help_text %}
+                <p class="help">{{ field.help_text|safe }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="login-button-div">
+        <button type="submit", name="submit", value="submit", class="btn btn-home login-button">Login</button>
+    </div>
+    </form>
+    <div class="signup">
+    <a href="{% url 'zencheck:signup' %}">Haven't made an account? Sign up here!</a>
+    </div>
+{% endblock %}

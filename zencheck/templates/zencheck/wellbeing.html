@@ -1,0 +1,376 @@
+{% extends 'zencheck/home.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<form id="wellbeing" method="post">
+
+    {% csrf_token %}
+
+    <section class="well" id="Q1" style="padding: 2rem 0!important;">
+        <h2 style="color:orange;">1. Why you started your business</h2>
+        
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">Remind yourself of the reasons why you started your own business. This could be practical reasons (such as to pay the bills) or broader motivators. List as many as you can.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> Flexibility- I work my own hours. </li>
+                <li class="list-elements"> New challenges every day. </li>
+                <li class="list-elements"> Pursue my passion. </li>
+            </ul>
+        </div>
+
+        <div class="box">
+            {% if result %}
+            <textarea readonly>{{ result.Q1 }}</textarea>
+            {% else %}
+            <textarea required name="Q1" class="wellbeing-testarea">
+            </textarea>
+            {% endif %}
+        </div>
+        <button class="button" type="button" onclick="to(2)">Next</button>
+    </section>
+
+    <section class="well" id="Q2" style="padding: 2rem 0!important;">
+
+        <h2 style="color:orange;">2. Your triggers</h2>
+
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">There can be specific things that you raise your stress levels and make distressing or challenging
+                situations more difficult. By identifying your triggers, you can anticipate them and define strategies to
+                manage them effectively. List your triggers.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> External pressures such as competitor activities and online reviews </li>
+                <li class="list-elements"> Establishing your brand, products and prices </li>
+                <li class="list-elements"> Angry clients </li>
+                <li class="list-elements"> Completing paperwork and compliance documentation </li>
+                <li class="list-elements"> Managing cash flow </li>
+            </ul>
+        </div>
+        <div class="box">
+            {% if result %}
+            <textarea readonly>{{ result.Q2 }}</textarea>
+            {% else %}
+            <textarea required name="Q2" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+
+        <button class="button" type="button" onclick="to(1)">Back</button>
+        <button class="button" type="button" onclick="to(3)">Next</button>
+
+    </section>
+
+    <section class="well" id="Q3" style="padding: 2rem 0!important;">
+        <h2 style="color:orange;">3. Warning signs</h2>
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">Warning signs are changes in thoughts or behaviours that suggest you may be experiencing stress or burnout.
+                Knowing your warning signs can help you act early.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> Irritable </li>
+                <li class="list-elements"> Forgetful </li>
+                <li class="list-elements"> Low energy </li>
+                <li class="list-elements"> Withdrawn </li>
+            </ul>
+        </div>
+        <div class="box" style="color: #155e6c">
+            List your personal warning signs
+            {% if result %}
+            <textarea readonly>{{ result.Q3 }}</textarea>
+            {% else %}
+            <textarea required name="Q3" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+
+        <div class="box" style="color: #155e6c">
+            List your at-work warning signs
+            {% if result %}
+            <textarea readonly>{{ result.Q4 }}</textarea>
+            {% else %}
+            <textarea required name="Q4" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+
+        <button class="button" type="button" onclick="to(2)">Back</button>
+        <button class="button" type="button" onclick="to(4)">Next</button>
+
+    </section>
+
+    <section class="well" id="Q4" style="padding: 2rem 0!important;">
+        <h2 style="color:orange;">4. Positive work habits</h2>
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">These are actions that improve your personal work environment and practices can help you feel more at ease.
+                In the long term, they help prevent burnout. List the things you believe you can do to maintain your
+                wellbeing in and outside of work.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> Eat well, prioritise sleep, stay physically fit. </li>
+                <li class="list-elements"> Be aware of the warning signs </li>
+                <li class="list-elements"> Talk to banks, ATO and creditors. </li>
+            </ul>
+        </div>
+        <div class="box">
+            {% if result %}
+            <textarea readonly>{{ result.Q5 }}</textarea>
+            {% else %}
+            <textarea name="Q5" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+        <button class="button" type="button" onclick="to(3)">Back</button>
+        <button class="button" type="button" onclick="to(5)">Next</button>
+
+    </section>
+
+    <section class="well" id="Q5" style="padding: 2rem 0!important;">
+        <h2 style="color:orange;">5. Positive actions I can do for others</h2>
+
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">Doing things for others is sometimes the best thing we can do for ourselves. Even if it’s just honest
+                gratitude, small acts of kindness quickly add up and make us feel good. List some things you believe you can
+                do with and for others.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> Grab a coffee to check-in with suppliers and work contacts. </li>
+                <li class="list-elements"> Be there for family and friends. </li>
+            </ul>
+        </div>
+
+        <div class="box">
+            {% if result.Q6 %}
+            <textarea readonly>{{ result.Q6 }}</textarea>
+            {% else %}
+            <textarea name="Q6" required="" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+
+        <button class="button" type="button" onclick="to(4)">Back</button>
+        <button class="button" type="button" onclick="to(6)">Next</button>
+
+    </section>
+
+    <section class="well" id="Q6" style="padding: 2rem 0!important;">
+        <h2 style="color:orange;">6. My support network</h2>
+    
+        <div class="des">
+            <p class="wellbeing-subtitle">Advice</p>
+            <p class="wellbeing-prompt">Collect the names and contact details of your main supporters. Try to include at least one support contact
+                from work.
+            </p>
+            <p class="wellbeing-example">Examples could include</p>
+            <ul class="wellbeing-example-list">
+                <li class="list-elements"> Work friend/coffee buddy. </li>
+                <li class="list-elements"> Close friend or family member. </li>
+                <li class="list-elements"> Accountant, business advisor or mentor. </li>
+                <li class="list-elements"> Industry association or local community groups. </li>
+            </ul>
+        </div>
+
+        <div class="box" style="color: #155e6c">
+            Personal support:
+            Collect the names, numbers and/or locations of personal contacts that can be of assistance.
+            {% if result %}
+            <textarea readonly>{{ result.Q7 }}</textarea>
+            {% else %}
+            <textarea name="Q7" required="" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+        <div class="box" style="color: #155e6c">
+            Professional support:
+            Collect the names, numbers and/or locations of professional mental health services you can contact.
+            {% if result %}
+            <textarea readonly>{{ result.Q8 }}</textarea>
+            {% else %}
+            <textarea name="Q8" required="" class="wellbeing-testarea"></textarea>
+            {% endif %}
+        </div>
+
+        <button class="button" type="button" onclick="to(5)">Back</button>
+        {% if not result %}
+        <button class="button" type="button" onclick="doSubmit()">Submit</button>
+        {% endif %}
+    </section>
+
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+
+    <script>
+
+        function doSubmit() {
+            if (confirm("Thanks for filling out your wellbeing plan. Your output will be generated shortly")) {
+                $("#wellbeing").submit();
+            }
+        }
+
+        {% if result %}
+        $("section.well").show();
+        $("button.button").hide();
+        {% else %}
+        function to(n) {
+            $("section.well").hide();
+            $("section.well#Q" + n).show();
+        }
+        to(1);
+        {% endif %}
+    </script>
+    <style>
+        textarea {
+            width: 100%;
+            height: 200px;
+            padding: 2rem;
+            resize: none;
+        }
+
+        h1 {
+            color: #f2994a;
+        }
+
+        button.step {
+            width: 150px;
+            height: 30px;
+            color: white;
+            background-color: #3a882e;
+            border: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: right;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .box textarea {
+            width: 100%;
+            height: 150pt;
+            border: solid 2px #f5f2f0;
+            border-radius: 10px;
+            margin: 8px 0;
+            outline: none;
+            padding: 8px;
+            box-sizing: border-box;
+            box-shadow: 1px 1px 6px 0px #2c303830;
+            transition: .3s;
+        }
+
+        .box textarea:focus {
+            border-color: dodgerblue;
+            box-shadow: 0 0 8px 0 dodgerblue;
+        }
+
+        .des {
+            width: 100%;
+            max-height: 100%;
+            border: solid 2px #f5f2f0;
+            border-radius: 10px;
+            box-shadow: 1px 1px 6px 0px #2c303830;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</form>
+{% else %}
+<div wellbeing-guide id="blur">
+    <h2 style="color:orange;padding-top:20px;">Why you started your business?</h2>
+    <div class="des" style="text-align:center;">
+        <p style="color:cornflowerblue;font-size:25px;">Advice</p>
+        Remind yourself of the reasons why you started your own business. This could be practical reasons (such as to
+        pay the bills) or broader motivators. List as many as you can
+    </div>
+    <div class="box">
+        <textarea required="" placeholder="
+    · Flexibility. I work my own hours. &#13;&#10;
+    · New challenges every day. &#13;&#10;
+    · Pursue my passion."></textarea>
+    </div>
+
+    <a href="" class="button">Next</a>
+</div>
+
+<div id="popup">
+    <h3> <a href="{% url 'zencheck:signup' %}"> Create an account today </a> to create a personal wellbeing plan! </h3>
+</div>
+<style>
+    textarea {
+        width: 100%;
+        height: 200px;
+        padding: 2rem;
+        resize: none;
+    }
+
+    h1 {
+        color: #f2994a;
+    }
+
+    button.step {
+        width: 150px;
+        height: 30px;
+        color: white;
+        background-color: #3a882e;
+        border: none;
+        font-weight: bold;
+        font-size: 13px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: right;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+
+    .box textarea {
+        width: 100%;
+        height: 150pt;
+        border: solid 2px #f5f2f0;
+        border-radius: 10px;
+        margin: 8px 0;
+        outline: none;
+        padding: 8px;
+        box-sizing: border-box;
+        box-shadow: 1px 1px 6px 0px #2c303830;
+        transition: .3s;
+    }
+
+    .box textarea:focus {
+        border-color: dodgerblue;
+        box-shadow: 0 0 8px 0 dodgerblue;
+    }
+
+    .des {
+        width: 100%;
+        height: 100pt;
+        border: solid 2px #f5f2f0;
+        border-radius: 10px;
+        box-shadow: 1px 1px 6px 0px #2c303830;
+        display: flex;
+        flex-direction: column;
+    }
+</style>
+
+{% endif %}
+{% endblock %}

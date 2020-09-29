@@ -1,0 +1,7 @@
+{% extends 'zencheck/home.html'%}
+{% load static %}
+{% block content %}
+<h1 class="error-page">404</h1>
+<h1 class="error-subtext">Oops, this page wasn't found!</h1>
+<a href="{% url 'zencheck:home' %}" id="login-btn" class="btn btn-home">Home</a>
+{% endblock %}

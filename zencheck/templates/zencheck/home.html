@@ -1,0 +1,293 @@
+{% load static %}
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ZenCheck- helping small business owners improve their mental health </title>
+  <link href=" {% static 'assets/css/theme.css' %} " rel="stylesheet" type="text/css" media="all" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,700&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+  <div class="navbar-container">
+    <nav class="navbar navbar-expand-lg navbar-home" data-overlay data-sticky="top">
+      <div class="container">
+        <a href=" {% url 'zencheck:home' %} ">
+          <img alt="ZenCheck" class="home-logo" src=" {% static 'assets/img/logos/zencheck_white.png' %} ">
+        </a>
+        <div class="d-flex align-items-center order-lg-3">
+          {% if user.is_authenticated %}
+          <a href="{% url 'zencheck:logout' %}" id="logout-btn" class="btn btn-home" style="margin-left:20px;">Log out, {{ user.username }}</a>
+          {% else %}
+          <a href="{% url 'zencheck:login' %}" id="login-btn" class="btn btn-home" style="margin-left:20px;">Log In / Sign
+            up</a>
+          {% endif %}
+
+        </div>
+        <div class="collapse navbar-collapse order-3 order-lg-2 justify-content-lg-end" id="navigation-menu">
+          <ul class="navbar-nav my-3 my-lg-0">
+            {% if user.is_authenticated and completed_pulsecheck is False %}
+            <li class="nav-item">
+              <a class="nav-link nav-item" href="{% url 'zencheck:pulsecheck' %}">Start Here</a>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link nav-item" href="{% url 'zencheck:dashboard' %}">Dashboard</a>
+            <li class="nav-item">
+                <a class="nav-link nav-item" href="{% url 'zencheck:wellbeing' %}">Wellbeing</a>
+            <li class="nav-item">
+              <a class="nav-link nav-item" href="{% url 'zencheck:resources' %}">Resources</a>
+            <li class="nav-item">
+              <a class="nav-link nav-item" href="{% url 'zencheck:news' %}">Newsroom</a>
+            <li class="nav-item">
+                <a class="nav-link nav-item" href="{% url 'zencheck:aboutus' %}">About</a>
+              </div>
+        </div>
+      </div>
+  </div>
+
+  {% if title == "Home" %}
+
+  <div data-overlay class="bg-primary-3 jarallax text-white" data-jarallax data-speed="0.2">
+    <img src=" {% static 'assets/img/background/office-building.jpg' %} " alt="Background" class="jarallax-img opacity-30">
+    <section class="pb-0">
+      <div class="container pb-5 cp-resize">
+        <div class="row justify-content-center text-center">
+          <div class="col-xl-8 col-lg-10 col-md-11">
+            
+            <h1 class="display-3 title-over-bg-wrapper">Assistance for all our small business owners and those who support them. </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <section class="home-section">
+    <div class="container">
+      <div class="row section-title justify-content-center text-center home-sizing">
+        <div class="col-md-9">
+          <p class="resources-welcome home-welcome">We empower small business owners to take action on their own mental health and wellbeing.
+          </p>
+        </div>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/businessman.svg' %} " alt="SBOs" class="mb-4 home-icon">
+            <h6 class="home-subtext">I am a</h6>
+            <h4>small business owner</h4>
+            <p class="home-summary">
+              Complete our 5-minute Pulse Check to assess your current mental health state and gain actionable recommendations for yourself!
+            </p>
+            <a href="{% url 'zencheck:pulsecheck' %}" class="btn home-box-btn">Learn more here</a>
+          </div>
+        </div>
+        
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/support.svg' %} " alt="Supporters" class="mb-4 home-icon">
+            <h6 class="home-subtext">I am</h6>
+            <h4>supporting a small business owner</h4>
+            <p class="home-summary">
+              We provide a variety of tips and resources to help you support the health of someone who is running their own business.
+            </p>
+            <a href="{% url 'zencheck:resources' %}" class="btn home-box-btn">Learn more here</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 mb-3 mb-md-5 home-boxshadow home-box-border">
+          <div class="mx-xl-4">
+            <img src=" {% static 'assets/icons/question.svg' %} " alt="ReachOut" class="mb-4 home-icon">
+            <h6 class="home-subtext">I am</h6>
+            <h4>looking to develop a support plan</h4>
+            <p class="home-summary">
+              Use our website to create your own personalised wellbeing plan, considering the major aspects of being a small business owner.
+            </p>
+            <a href="{% url 'zencheck:wellbeing' %}" class="btn home-box-btn">Learn more here</a>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+
+  {% else %}
+  <div data-overlay class="bg-primary-3 jarallax text-white" data-jarallax data-speed="0.2">
+    <img src="{{ background_url }}" alt="Background" class="jarallax-img opacity-30">
+    <section class="pb-0">
+      <div class="container pb-5 cp-resize">
+        <div class="row justify-content-center text-center">
+          <div class="col-xl-8 col-lg-10 col-md-11">
+            <h1 class="display-3 title-over-bg-wrapper"> {{title}} </h1>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  {% endif %}
+
+  <!-- Block Content for other pages -->
+  <div class="container">
+    {% block content %}
+    {% endblock %}
+  </div>
+
+
+<!-- Footer, to appear on specific pages -->
+{% if title != "My Dashboard" and title != " Login below:  " and title != "Login below: " and title != "Logged out"  and title != "Oops!" %}
+
+<style>
+  ul {
+ padding:0;
+ margin:0
+}
+li {
+ list-style:none
+}
+
+a:focus {
+ outline:0
+}
+img {
+ max-width:100%
+}
+p {
+ font-size:16px;
+ line-height:30px;
+ color:#898b96;
+ font-weight:300
+}
+h4 {
+ font-family:Rubik,sans-serif;
+ margin:0;
+ font-weight:400;
+ padding:0;
+ color:#363940
+}
+a {
+ color:#5867dd
+}
+.no-padding {
+ padding:0!important
+}
+
+.footer-overlay {
+ padding:40px 0 40px 0;
+ background: #f2f2f2;
+}
+
+.footer-overlay .footer-widget {
+ margin-bottom:40px
+}
+.footer--light {
+ background:#ffff
+}
+.footer-overlay .footer-menu ul li a,.footer-big p,.footer-big ul li {
+ color:#898b96
+}
+.footer-menu {
+ padding-left:48px
+}
+.footer-menu ul li a {
+ font-size:15px;
+ line-height:32px;
+ -webkit-transition:.3s;
+ -o-transition:.3s;
+ transition:.3s
+}
+.footer-menu ul li a:hover {
+ color:#5867dd
+}
+.footer-menu--1 {
+ width:100%
+}
+
+.footer-section-title {
+ /*line-height:42px; */
+ margin-bottom:10px;
+ font-size:20px
+}
+
+@media (max-width:991px) {
+ .footer-menu {
+  padding-left:0
+ }
+}
+</style>
+
+  <footer class="footer-area footer--light">
+  <div class="footer-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12">
+          <div class="footer-section">
+            <div class="blurb">
+              <img style="max-width:200px;" src="{% static 'assets/img/logos/zencheck_dark.png' %}" alt="" class="img-fluid">
+              <p>Empowering small business owners to take action on their mental health.</p>    
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-section">
+            <div class="footer-menu">
+              <h4 class="footer-section-title">Tools</h4>
+              <ul>
+                <li>
+                  <a href="{% url 'zencheck:dashboard' %}">Dashboard</a>
+                </li>
+                <li>
+                  <a href="{% url 'zencheck:wellbeing' %}">Well-Being Plan</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <div class="footer-menu">
+              <h4 class="footer-section-title">News</h4>
+              <ul>
+                <li>
+                  <a href="{% url 'zencheck:news' %}">Newsroom</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-4">
+          <div class="footer-widget">
+            <div class="footer-menu no-padding">
+              <h4 class="footer-section-title">Resources</h4>
+              <ul>
+                <li>
+                  <a href="{% url 'zencheck:resources' %}">Stress Management</a>
+                </li>
+                <li>
+                  <a href="{% url 'zencheck:resources' %}">Financial Advice</a>
+                </li>
+                <li>
+                  <a href="{% url 'zencheck:resources' %}">Speak to someone</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+{% endif %}
+
+    <!-- JavaScript files -->
+    <script type="text/javascript" src=" {% static 'assets/js/jquery.min.js' %} "></script>
+    <script type="text/javascript" src=" {% static 'assets/js/bootstrap.js' %} "></script>
+    <script type="text/javascript" src=" {% static 'assets/js/jarallax.min.js' %} "></script>
+    <script type="text/javascript" src=" {% static 'assets/js/jarallax-element.min.js' %} "></script>
+
+</body>
+
+</html>

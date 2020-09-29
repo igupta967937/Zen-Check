@@ -1,0 +1,798 @@
+{% extends 'zencheck/home.html'%}
+{% load static %}
+{% block content %}
+{% if user.is_authenticated %}
+
+<h1 id="pulsecheck_title"></h1>
+<div class="pulsecheck">
+    <form method="post" action="#">
+        {% csrf_token %}
+        <div class="pulsecheck-question">
+            <h2 class="category-title">Work Life Balance</h2>
+            <hr>
+            <h3>I enjoy hobbies or interests outside of my work.</h3>
+            <fieldset id="group1">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group1" id="Pmax" value=6>
+                    <label for="Pmax" class="Pmax positive pc"></label>
+                    <input type="radio" name="group1" id="Pmed" value=5>
+                    <label for="Pmed" class="Pmed positive pc"></label>
+                    <input type="radio" name="group1" id="Pmin" value=4>
+                    <label for="Pmin" class="Pmin positive pc"></label>
+                    <input type="radio" name="group1" id="Neutral" value=3>
+                    <label for="Neutral" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group1" id="Nmin" value=2>
+                    <label for="Nmin" class="Nmin negative pc"></label>
+                    <input type="radio" name="group1" id="Nmed" value=2>
+                    <label for="Nmed" class="Nmed negative pc"></label>
+                    <input type="radio" name="group1" id="Nmax" value=2>
+                    <label for="Nmax" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have time to do something just for me every week.</h3>
+            <fieldset id="group2">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group2" id="Pmax2" value=6>
+                    <label for="Pmax2" class="Pmax positive pc"></label>
+                    <input type="radio" name="group2" id="Pmed2" value=5>
+                    <label for="Pmed2" class="Pmed positive pc"></label>
+                    <input type="radio" name="group2" id="Pmin2" value=4>
+                    <label for="Pmin2" class="Pmin positive pc"></label>
+                    <input type="radio" name="group2" id="Neutral2" value=3>
+                    <label for="Neutral2" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group2" id="Nmin2" value=2>
+                    <label for="Nmin2" class="Nmin negative pc"></label>
+                    <input type="radio" name="group2" id="Nmed2" value=1>
+                    <label for="Nmed2" class="Nmed negative pc"></label>
+                    <input type="radio" name="group2" id="Nmax2" value=0>
+                    <label for="Nmax2" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I forget about work when I am not working.</h3>
+            <fieldset id="group3">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group3" id="Pmax3" value=6>
+                    <label for="Pmax3" class="Pmax positive pc"></label>
+                    <input type="radio" name="group3" id="Pmed3" value=5>
+                    <label for="Pmed3" class="Pmed positive pc"></label>
+                    <input type="radio" name="group3" id="Pmin3" value=4>
+                    <label for="Pmin3" class="Pmin positive pc"></label>
+                    <input type="radio" name="group3" id="Neutral3" value=3>
+                    <label for="Neutral3" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group3" id="Nmin3" value=2>
+                    <label for="Nmin3" class="Nmin negative pc"></label>
+                    <input type="radio" name="group3" id="Nmed3" value=1>
+                    <label for="Nmed3" class="Nmed negative pc"></label>
+                    <input type="radio" name="group3" id="Nmax3" value=0>
+                    <label for="Nmax3" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I take a lunch break each day.</h3>
+            <fieldset id="group4">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group4" id="Pmax4" value=6>
+                    <label for="Pmax4" class="Pmax positive pc"></label>
+                    <input type="radio" name="group4" id="Pmed4" value=5>
+                    <label for="Pmed4" class="Pmed positive pc"></label>
+                    <input type="radio" name="group4" id="Pmin4" value=4>
+                    <label for="Pmin4" class="Pmin positive pc"></label>
+                    <input type="radio" name="group4" id="Neutral4" value=3>
+                    <label for="Neutral4" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group4" id="Nmin4" value=2>
+                    <label for="Nmin4" class="Nmin negative pc"></label>
+                    <input type="radio" name="group4" id="Nmed4" value=1>
+                    <label for="Nmed4" class="Nmed negative pc"></label>
+                    <input type="radio" name="group4" id="Nmax4" value=0>
+                    <label for="Nmax4" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>My family is never upset with me about the amount of time I spend working.</h3>
+            <fieldset id="group5">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group5" id="Pmax5" value=6>
+                    <label for="Pmax5" class="Pmax positive pc"></label>
+                    <input type="radio" name="group5" id="Pmed5" value=5>
+                    <label for="Pmed5" class="Pmed positive pc"></label>
+                    <input type="radio" name="group5" id="Pmin5" value=4>
+                    <label for="Pmin5" class="Pmin positive pc"></label>
+                    <input type="radio" name="group5" id="Neutral5" value=3>
+                    <label for="Neutral5" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group5" id="Nmin5" value=2>
+                    <label for="Nmin5" class="Nmin negative pc"></label>
+                    <input type="radio" name="group5" id="Nmed5" value=1>
+                    <label for="Nmed5" class="Nmed negative pc"></label>
+                    <input type="radio" name="group5" id="Nmax5" value=0>
+                    <label for="Nmax5" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <h2 class="category-title">Financial Health</h2>
+            <hr>
+            <h3>I feel that I earn enough to be considered financially stable.</h3>
+            <fieldset id="group6">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group6" id="Pmax6" value=6>
+                    <label for="Pmax6" class="Pmax positive pc"></label>
+                    <input type="radio" name="group6" id="Pmed6" value=5>
+                    <label for="Pmed6" class="Pmed positive pc"></label>
+                    <input type="radio" name="group6" id="Pmin6" value=4>
+                    <label for="Pmin6" class="Pmin positive pc"></label>
+                    <input type="radio" name="group6" id="Neutral6" value=3>
+                    <label for="Neutral6" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group6" id="Nmin6" value=2>
+                    <label for="Nmin6" class="Nmin negative pc"></label>
+                    <input type="radio" name="group6" id="Nmed6" value=1>
+                    <label for="Nmed6" class="Nmed negative pc"></label>
+                    <input type="radio" name="group6" id="Nmax6" value=0>
+                    <label for="Nmax6" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>The business is profitable enough to comfortably meet all expenses.</h3>
+            <fieldset id="group7">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group7" id="Pmax7" value=6>
+                    <label for="Pmax7" class="Pmax positive pc"></label>
+                    <input type="radio" name="group7" id="Pmed7" value=5>
+                    <label for="Pmed7" class="Pmed positive pc"></label>
+                    <input type="radio" name="group7" id="Pmin7" value=4>
+                    <label for="Pmin7" class="Pmin positive pc"></label>
+                    <input type="radio" name="group7" id="Neutral7" value=3>
+                    <label for="Neutral7" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group7" id="Nmin7" value=2>
+                    <label for="Nmin7" class="Nmin negative pc"></label>
+                    <input type="radio" name="group7" id="Nmed7" value=1>
+                    <label for="Nmed7" class="Nmed negative pc"></label>
+                    <input type="radio" name="group7" id="Nmax7" value=0>
+                    <label for="Nmax7" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I could handle a major unexpected expense.</h3>
+            <fieldset id="group8">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group8" id="Pmax8" value=6>
+                    <label for="Pmax8" class="Pmax positive pc"></label>
+                    <input type="radio" name="group8" id="Pmed8" value=5>
+                    <label for="Pmed8" class="Pmed positive pc"></label>
+                    <input type="radio" name="group8" id="Pmin8" value=4>
+                    <label for="Pmin8" class="Pmin positive pc"></label>
+                    <input type="radio" name="group8" id="Neutral8" value=3>
+                    <label for="Neutral8" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group8" id="Nmin8" value=2>
+                    <label for="Nmin8" class="Nmin negative pc"></label>
+                    <input type="radio" name="group8" id="Nmed8" value=1>
+                    <label for="Nmed8" class="Nmed negative pc"></label>
+                    <input type="radio" name="group8" id="Nmax8" value=0>
+                    <label for="Nmax8" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have money left over at the end of the month.</h3>
+            <fieldset id="group9">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group9" id="Pmax9" value=6>
+                    <label for="Pmax9" class="Pmax positive pc"></label>
+                    <input type="radio" name="group9" id="Pmed9" value=5>
+                    <label for="Pmed9" class="Pmed positive pc"></label>
+                    <input type="radio" name="group9" id="Pmin9" value=4>
+                    <label for="Pmin9" class="Pmin positive pc"></label>
+                    <input type="radio" name="group9" id="Neutral9" value=3>
+                    <label for="Neutral9" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group9" id="Nmin9" value=2>
+                    <label for="Nmin9" class="Nmin negative pc"></label>
+                    <input type="radio" name="group9" id="Nmed9" value=1>
+                    <label for="Nmed9" class="Nmed negative pc"></label>
+                    <input type="radio" name="group9" id="Nmax9" value=0>
+                    <label for="Nmax9" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I can enjoy life because of the way I am managing my money.</h3>
+            <fieldset id="group10">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group10" id="Pmax10" value=6>
+                    <label for="Pmax10" class="Pmax positive pc"></label>
+                    <input type="radio" name="group10" id="Pmed10" value=5>
+                    <label for="Pmed10" class="Pmed positive pc"></label>
+                    <input type="radio" name="group10" id="Pmin10" value=4>
+                    <label for="Pmin10" class="Pmin positive pc"></label>
+                    <input type="radio" name="group10" id="Neutral10" value=3>
+                    <label for="Neutral10" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group10" id="Nmin10" value=2>
+                    <label for="Nmin10" class="Nmin negative pc"></label>
+                    <input type="radio" name="group10" id="Nmed10" value=1>
+                    <label for="Nmed10" class="Nmed negative pc"></label>
+                    <input type="radio" name="group10" id="Nmax10" value=0>
+                    <label for="Nmax10" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I do not feel trapped by my debt obligations.</h3>
+            <fieldset id="group11">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group11" id="Pmax11" value=6>
+                    <label for="Pmax11" class="Pmax positive pc"></label>
+                    <input type="radio" name="group11" id="Pmed11" value=5>
+                    <label for="Pmed11" class="Pmed positive pc"></label>
+                    <input type="radio" name="group11" id="Pmin11" value=4>
+                    <label for="Pmin11" class="Pmin positive pc"></label>
+                    <input type="radio" name="group11" id="Neutral11" value=3>
+                    <label for="Neutral11" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group11" id="Nmin11" value=2>
+                    <label for="Nmin11" class="Nmin negative pc"></label>
+                    <input type="radio" name="group11" id="Nmed11" value=1>
+                    <label for="Nmed11" class="Nmed negative pc"></label>
+                    <input type="radio" name="group11" id="Nmax11" value=0>
+                    <label for="Nmax11" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <h2 class="category-title">Support Network</h2>
+            <hr>
+            <h3>I often speak to my friends around me about my issues.</h3>
+            <fieldset id="group12">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group12" id="Pmax12" value=6>
+                    <label for="Pmax12" class="Pmax positive pc"></label>
+                    <input type="radio" name="group12" id="Pmed12" value=5>
+                    <label for="Pmed12" class="Pmed positive pc"></label>
+                    <input type="radio" name="group12" id="Pmin12" value=4>
+                    <label for="Pmin12" class="Pmin positive pc"></label>
+                    <input type="radio" name="group12" id="Neutral12" value=3>
+                    <label for="Neutral12" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group12" id="Nmin12" value=2>
+                    <label for="Nmin12" class="Nmin negative pc"></label>
+                    <input type="radio" name="group12" id="Nmed12" value=1>
+                    <label for="Nmed12" class="Nmed negative pc"></label>
+                    <input type="radio" name="group12" id="Nmax12" value=0>
+                    <label for="Nmax12" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I feel loved and supported.</h3>
+            <fieldset id="group13">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group13" id="Pmax13" value=6>
+                    <label for="Pmax13" class="Pmax positive pc"></label>
+                    <input type="radio" name="group13" id="Pmed13" value=5>
+                    <label for="Pmed13" class="Pmed positive pc"></label>
+                    <input type="radio" name="group13" id="Pmin13" value=4>
+                    <label for="Pmin13" class="Pmin positive pc"></label>
+                    <input type="radio" name="group13" id="Neutral13" value=3>
+                    <label for="Neutral13" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group13" id="Nmin13" value=2>
+                    <label for="Nmin13" class="Nmin negative pc"></label>
+                    <input type="radio" name="group13" id="Nmed13" value=1>
+                    <label for="Nmed13" class="Nmed negative pc"></label>
+                    <input type="radio" name="group13" id="Nmax13" value=0>
+                    <label for="Nmax13" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have people that care about my actions and what happens to me.</h3>
+            <fieldset id="group14">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group14" id="Pmax14" value=6>
+                    <label for="Pmax14" class="Pmax positive pc"></label>
+                    <input type="radio" name="group14" id="Pmed14" value=5>
+                    <label for="Pmed14" class="Pmed positive pc"></label>
+                    <input type="radio" name="group14" id="Pmin14" value=4>
+                    <label for="Pmin14" class="Pmin positive pc"></label>
+                    <input type="radio" name="group14" id="Neutral14" value=3>
+                    <label for="Neutral14" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group14" id="Nmin14" value=2>
+                    <label for="Nmin14" class="Nmin negative pc"></label>
+                    <input type="radio" name="group14" id="Nmed14" value=1>
+                    <label for="Nmed14" class="Nmed negative pc"></label>
+                    <input type="radio" name="group14" id="Nmax14" value=0>
+                    <label for="Nmax14" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I am aware of mental health organisations to contact for support.</h3>
+            <fieldset id="group15">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group15" id="Pmax15" value=6>
+                    <label for="Pmax15" class="Pmax positive pc"></label>
+                    <input type="radio" name="group15" id="Pmed15" value=5>
+                    <label for="Pmed15" class="Pmed positive pc"></label>
+                    <input type="radio" name="group15" id="Pmin15" value=4>
+                    <label for="Pmin15" class="Pmin positive pc"></label>
+                    <input type="radio" name="group15" id="Neutral15" value=3>
+                    <label for="Neutral15" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group15" id="Nmin15" value=2>
+                    <label for="Nmin15" class="Nmin negative pc"></label>
+                    <input type="radio" name="group15" id="Nmed15" value=1>
+                    <label for="Nmed15" class="Nmed negative pc"></label>
+                    <input type="radio" name="group15" id="Nmax15" value=0>
+                    <label for="Nmax15" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have people who understand the challenges I face.</h3>
+            <fieldset id="group16">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group16" id="Pmax16" value=6>
+                    <label for="Pmax16" class="Pmax positive pc"></label>
+                    <input type="radio" name="group16" id="Pmed16" value=5>
+                    <label for="Pmed16" class="Pmed positive pc"></label>
+                    <input type="radio" name="group16" id="Pmin16" value=4>
+                    <label for="Pmin16" class="Pmin positive pc"></label>
+                    <input type="radio" name="group16" id="Neutral16" value=3>
+                    <label for="Neutral16" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group16" id="Nmin16" value=2>
+                    <label for="Nmin16" class="Nmin negative pc"></label>
+                    <input type="radio" name="group16" id="Nmed16" value=1>
+                    <label for="Nmed16" class="Nmed negative pc"></label>
+                    <input type="radio" name="group16" id="Nmax16" value=0>
+                    <label for="Nmax16" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I am not alone.</h3>
+            <fieldset id="group17">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group17" id="Pmax17" value=6>
+                    <label for="Pmax17" class="Pmax positive pc"></label>
+                    <input type="radio" name="group17" id="Pmed17" value=5>
+                    <label for="Pmed17" class="Pmed positive pc"></label>
+                    <input type="radio" name="group17" id="Pmin17" value=4>
+                    <label for="Pmin17" class="Pmin positive pc"></label>
+                    <input type="radio" name="group17" id="Neutral17" value=3>
+                    <label for="Neutral17" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group17" id="Nmin17" value=2>
+                    <label for="Nmin17" class="Nmin negative pc"></label>
+                    <input type="radio" name="group17" id="Nmed17" value=1>
+                    <label for="Nmed17" class="Nmed negative pc"></label>
+                    <input type="radio" name="group17" id="Nmax17" value=0>
+                    <label for="Nmax17" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <h2 class="category-title">Physical Health</h2>
+            <hr>
+            <h3>I get 6-8 hours of sleep a night.</h3>
+            <fieldset id="group18">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group18" id="Pmax18" value=6>
+                    <label for="Pmax18" class="Pmax positive pc"></label>
+                    <input type="radio" name="group18" id="Pmed18" value=5>
+                    <label for="Pmed18" class="Pmed positive pc"></label>
+                    <input type="radio" name="group18" id="Pmin18" value=4>
+                    <label for="Pmin18" class="Pmin positive pc"></label>
+                    <input type="radio" name="group18" id="Neutral18" value=3>
+                    <label for="Neutral18" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group18" id="Nmin18" value=2>
+                    <label for="Nmin18" class="Nmin negative pc"></label>
+                    <input type="radio" name="group18" id="Nmed18" value=1>
+                    <label for="Nmed18" class="Nmed negative pc"></label>
+                    <input type="radio" name="group18" id="Nmax18" value=0>
+                    <label for="Nmax18" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I drink less than 10 standard drinks a week.</h3>
+            <fieldset id="group19">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group19" id="Pmax19" value=6>
+                    <label for="Pmax19" class="Pmax positive pc"></label>
+                    <input type="radio" name="group19" id="Pmed19" value=5>
+                    <label for="Pmed19" class="Pmed positive pc"></label>
+                    <input type="radio" name="group19" id="Pmin19" value=4>
+                    <label for="Pmin19" class="Pmin positive pc"></label>
+                    <input type="radio" name="group19" id="Neutral19" value=3>
+                    <label for="Neutral19" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group19" id="Nmin19" value=2>
+                    <label for="Nmin19" class="Nmin negative pc"></label>
+                    <input type="radio" name="group19" id="Nmed19" value=1>
+                    <label for="Nmed19" class="Nmed negative pc"></label>
+                    <input type="radio" name="group19" id="Nmax19" value=0>
+                    <label for="Nmax19" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I avoid smoking.</h3>
+            <fieldset id="group20">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group20" id="Pmax20" value=6>
+                    <label for="Pmax20" class="Pmax positive pc"></label>
+                    <input type="radio" name="group20" id="Pmed20" value=5>
+                    <label for="Pmed20" class="Pmed positive pc"></label>
+                    <input type="radio" name="group20" id="Pmin20" value=4>
+                    <label for="Pmin20" class="Pmin positive pc"></label>
+                    <input type="radio" name="group20" id="Neutral20" value=3>
+                    <label for="Neutral20" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group20" id="Nmin20" value=2>
+                    <label for="Nmin20" class="Nmin negative pc"></label>
+                    <input type="radio" name="group20" id="Nmed20" value=1>
+                    <label for="Nmed20" class="Nmed negative pc"></label>
+                    <input type="radio" name="group20" id="Nmax20" value=0>
+                    <label for="Nmax20" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I walk 10,000 steps a day.</h3>
+            <fieldset id="group21">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group21" id="Pmax21" value=6>
+                    <label for="Pmax21" class="Pmax positive pc"></label>
+                    <input type="radio" name="group21" id="Pmed21" value=5>
+                    <label for="Pmed21" class="Pmed positive pc"></label>
+                    <input type="radio" name="group21" id="Pmin21" value=4>
+                    <label for="Pmin21" class="Pmin positive pc"></label>
+                    <input type="radio" name="group21" id="Neutral21" value=3>
+                    <label for="Neutral21" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group21" id="Nmin21" value=2>
+                    <label for="Nmin21" class="Nmin negative pc"></label>
+                    <input type="radio" name="group21" id="Nmed21" value=1>
+                    <label for="Nmed21" class="Nmed negative pc"></label>
+                    <input type="radio" name="group21" id="Nmax21" value=0>
+                    <label for="Nmax21" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I eat a balanced diet including lots of fresh fruit and vegetables.</h3>
+            <fieldset id="group22">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group22" id="Pmax22" value=6>
+                    <label for="Pmax22" class="Pmax positive pc"></label>
+                    <input type="radio" name="group22" id="Pmed22" value=5>
+                    <label for="Pmed22" class="Pmed positive pc"></label>
+                    <input type="radio" name="group22" id="Pmin22" value=4>
+                    <label for="Pmin22" class="Pmin positive pc"></label>
+                    <input type="radio" name="group22" id="Neutral22" value=3>
+                    <label for="Neutral22" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group22" id="Nmin22" value=2>
+                    <label for="Nmin22" class="Nmin negative pc"></label>
+                    <input type="radio" name="group22" id="Nmed22" value=1>
+                    <label for="Nmed22" class="Nmed negative pc"></label>
+                    <input type="radio" name="group22" id="Nmax22" value=0>
+                    <label for="Nmax22" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <h2 class="category-title">Emotional Health</h2>
+            <hr>
+            <h3>I have little interest or pleasure in doing things.</h3>
+            <fieldset id="group23">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Disagree</a>
+                    <input type="radio" name="group23" id="Nmax23" value=6>
+                    <label for="Nmax23" class="Pmax positive pc"></label>
+                    <input type="radio" name="group23" id="Nmed23" value=5>
+                    <label for="Nmed23" class="Pmed positive pc"></label>
+                    <input type="radio" name="group23" id="Nmin23" value=4>
+                    <label for="Nmin23" class="Pmin positive pc"></label>
+                    <input type="radio" name="group23" id="Neutral23" value=3>
+                    <label for="Neutral23" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group23" id="Pmin23" value=2>
+                    <label for="Pmin23" class="Nmin negative pc"></label>
+                    <input type="radio" name="group23" id="Pmed23" value=1>
+                    <label for="Pmed23" class="Nmed negative pc"></label>
+                    <input type="radio" name="group23" id="Pmax23" value=0>
+                    <label for="Pmax23" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Agree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have trouble falling asleep, staying asleep or sleeping too much.</h3>
+            <fieldset id="group24">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Disagree</a>
+                    <input type="radio" name="group24" id="Nmax24" value=6>
+                    <label for="Nmax24" class="Pmax positive pc"></label>
+                    <input type="radio" name="group24" id="Nmed24" value=5>
+                    <label for="Nmed24" class="Pmed positive pc"></label>
+                    <input type="radio" name="group24" id="Nmin24" value=4>
+                    <label for="Nmin24" class="Pmin positive pc"></label>
+                    <input type="radio" name="group24" id="Neutral24" value=3>
+                    <label for="Neutral24" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group24" id="Pmin24" value=2>
+                    <label for="Pmin24" class="Nmin negative pc"></label>
+                    <input type="radio" name="group24" id="Pmed24" value=1>
+                    <label for="Pmed24" class="Nmed negative pc"></label>
+                    <input type="radio" name="group24" id="Pmax24" value=0>
+                    <label for="Pmax24" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Agree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have trouble concentrating on things such as reading the newspaper or watching television.</h3>
+            <fieldset id="group25">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Disagree</a>
+                    <input type="radio" name="group25" id="Nmax25" value=6>
+                    <label for="Nmax25" class="Pmax positive pc"></label>
+                    <input type="radio" name="group25" id="Nmed25" value=5>
+                    <label for="Nmed25" class="Pmed positive pc"></label>
+                    <input type="radio" name="group25" id="Nmin25" value=4>
+                    <label for="Nmin25" class="Pmin positive pc"></label>
+                    <input type="radio" name="group25" id="Neutral25" value=3>
+                    <label for="Neutral25" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group25" id="Pmin25" value=2>
+                    <label for="Pmin25" class="Nmin negative pc"></label>
+                    <input type="radio" name="group25" id="Pmed25" value=1>
+                    <label for="Pmed25" class="Nmed negative pc"></label>
+                    <input type="radio" name="group25" id="Pmax25" value=0>
+                    <label for="Pmax25" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Agree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I feel bad about myself, feel that I am a failure or that I let my family down.</h3>
+            <fieldset id="group26">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Disagree</a>
+                    <input type="radio" name="group26" id="Nmax26" value=6>
+                    <label for="Nmax26" class="Pmax positive pc"></label>
+                    <input type="radio" name="group26" id="Nmed26" value=5>
+                    <label for="Nmed26" class="Pmed positive pc"></label>
+                    <input type="radio" name="group26" id="Nmin26" value=4>
+                    <label for="Nmin26" class="Pmin positive pc"></label>
+                    <input type="radio" name="group26" id="Neutral26" value=3>
+                    <label for="Neutral26" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group26" id="Pmin26" value=2>
+                    <label for="Pmin26" class="Nmin negative pc"></label>
+                    <input type="radio" name="group26" id="Pmed26" value=1>
+                    <label for="Pmed26" class="Nmed negative pc"></label>
+                    <input type="radio" name="group26" id="Pmax26" value=0>
+                    <label for="Pmax26" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Agree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have thoughts that I would be better off dead.</h3>
+            <fieldset id="group27">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Disagree</a>
+                    <input type="radio" name="group27" id="Nmax27" value=6>
+                    <label for="Nmax27" class="Pmax positive pc"></label>
+                    <input type="radio" name="group27" id="Nmed27" value=5>
+                    <label for="Nmed27" class="Pmed positive pc"></label>
+                    <input type="radio" name="group27" id="Nmin27" value=4>
+                    <label for="Nmin27" class="Pmin positive pc"></label>
+                    <input type="radio" name="group27" id="Neutral27" value=3>
+                    <label for="Neutral27" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group27" id="Pmin27" value=2>
+                    <label for="Pmin27" class="Nmin negative pc"></label>
+                    <input type="radio" name="group27" id="Pmed27" value=1>
+                    <label for="Pmed27" class="Nmed negative pc"></label>
+                    <input type="radio" name="group27" id="Pmax27" value=0>
+                    <label for="Pmax27" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Agree</a>
+                </div>
+            </fieldset>
+        </div>
+        <input type="hidden" name="user_id" value="{{ user.id }}">
+        <div class="button-wrapper"> 
+            <button type="submit", name="submit", value="submit", class="btn btn-home pulsecheck-button">Submit results</button>
+        </div>
+</div>
+{% else %}
+
+<div class="pulsecheck" id="blur">
+        <div class="pulsecheck-question">
+            <h2 class="category-title">Work Life Balance</h2>
+            <hr>
+            <h3>I enjoy hobbies or interests outside of my work.</h3>
+            <fieldset id="group1">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group1" id="Pmax" value=6>
+                    <label for="Pmax" class="Pmax positive pc"></label>
+                    <input type="radio" name="group1" id="Pmed" value=5>
+                    <label for="Pmed" class="Pmed positive pc"></label>
+                    <input type="radio" name="group1" id="Pmin" value=4>
+                    <label for="Pmin" class="Pmin positive pc"></label>
+                    <input type="radio" name="group1" id="Neutral" value=3>
+                    <label for="Neutral" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group1" id="Nmin" value=2>
+                    <label for="Nmin" class="Nmin negative pc"></label>
+                    <input type="radio" name="group1" id="Nmed" value=2>
+                    <label for="Nmed" class="Nmed negative pc"></label>
+                    <input type="radio" name="group1" id="Nmax" value=2>
+                    <label for="Nmax" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I have time to do something just for me every week.</h3>
+            <fieldset id="group2">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group2" id="Pmax2" value=6>
+                    <label for="Pmax2" class="Pmax positive pc"></label>
+                    <input type="radio" name="group2" id="Pmed2" value=5>
+                    <label for="Pmed2" class="Pmed positive pc"></label>
+                    <input type="radio" name="group2" id="Pmin2" value=4>
+                    <label for="Pmin2" class="Pmin positive pc"></label>
+                    <input type="radio" name="group2" id="Neutral2" value=3>
+                    <label for="Neutral2" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group2" id="Nmin2" value=2>
+                    <label for="Nmin2" class="Nmin negative pc"></label>
+                    <input type="radio" name="group2" id="Nmed2" value=1>
+                    <label for="Nmed2" class="Nmed negative pc"></label>
+                    <input type="radio" name="group2" id="Nmax2" value=0>
+                    <label for="Nmax2" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I forget about work when I am not working.</h3>
+            <fieldset id="group3">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group3" id="Pmax3" value=6>
+                    <label for="Pmax3" class="Pmax positive pc"></label>
+                    <input type="radio" name="group3" id="Pmed3" value=5>
+                    <label for="Pmed3" class="Pmed positive pc"></label>
+                    <input type="radio" name="group3" id="Pmin3" value=4>
+                    <label for="Pmin3" class="Pmin positive pc"></label>
+                    <input type="radio" name="group3" id="Neutral3" value=3>
+                    <label for="Neutral3" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group3" id="Nmin3" value=2>
+                    <label for="Nmin3" class="Nmin negative pc"></label>
+                    <input type="radio" name="group3" id="Nmed3" value=1>
+                    <label for="Nmed3" class="Nmed negative pc"></label>
+                    <input type="radio" name="group3" id="Nmax3" value=0>
+                    <label for="Nmax3" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>I take a lunch break each day.</h3>
+            <fieldset id="group4">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group4" id="Pmax4" value=6>
+                    <label for="Pmax4" class="Pmax positive pc"></label>
+                    <input type="radio" name="group4" id="Pmed4" value=5>
+                    <label for="Pmed4" class="Pmed positive pc"></label>
+                    <input type="radio" name="group4" id="Pmin4" value=4>
+                    <label for="Pmin4" class="Pmin positive pc"></label>
+                    <input type="radio" name="group4" id="Neutral4" value=3>
+                    <label for="Neutral4" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group4" id="Nmin4" value=2>
+                    <label for="Nmin4" class="Nmin negative pc"></label>
+                    <input type="radio" name="group4" id="Nmed4" value=1>
+                    <label for="Nmed4" class="Nmed negative pc"></label>
+                    <input type="radio" name="group4" id="Nmax4" value=0>
+                    <label for="Nmax4" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+            <hr>
+            <h3>My family is never upset with me about the amount of time I spend working.</h3>
+            <fieldset id="group5">
+                <div class="pulsecheck-radio">
+                    <a class="subtext-positive">Agree</a>
+                    <input type="radio" name="group5" id="Pmax5" value=6>
+                    <label for="Pmax5" class="Pmax positive pc"></label>
+                    <input type="radio" name="group5" id="Pmed5" value=5>
+                    <label for="Pmed5" class="Pmed positive pc"></label>
+                    <input type="radio" name="group5" id="Pmin5" value=4>
+                    <label for="Pmin5" class="Pmin positive pc"></label>
+                    <input type="radio" name="group5" id="Neutral5" value=3>
+                    <label for="Neutral5" class="Neutral neutral pc"></label>
+                    <input type="radio" name="group5" id="Nmin5" value=2>
+                    <label for="Nmin5" class="Nmin negative pc"></label>
+                    <input type="radio" name="group5" id="Nmed5" value=1>
+                    <label for="Nmed5" class="Nmed negative pc"></label>
+                    <input type="radio" name="group5" id="Nmax5" value=0>
+                    <label for="Nmax5" class="Nmax negative pc"></label>
+                    <a class="subtext-negative">Disagree</a>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>
+
+    <div id="popup">
+            <h3> <a href="{% url 'zencheck:signup' %}"> Create an account today </a> to complete a free pulse check! </h3>
+            </div>
+                    <style>
+            textarea {
+                width: 100%;
+                height: 300px;
+                padding: 2rem;
+            }
+            h1 {
+                color: #f2994a;
+            }
+            button.step {
+                width: 150px;
+                height: 30px;
+                color: white;
+                background-color: #3a882e;
+                border: none;
+                font-weight: bold;
+                font-size: 13px;
+            }
+            .button {
+                background-color: #4CAF50;
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: right;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
+            .box textarea{
+                width:100%;
+                height:200pt;
+                border: solid 2px #f5f2f0;
+                border-radius: 10px;
+                margin:8px 0;
+                outline:none;
+                padding: 8px;
+                box-sizing: border-box;
+                box-shadow: 1px 1px 6px 0px #2c303830;
+                transition:.3s;
+            }
+            .box textarea:focus{
+                border-color:dodgerblue;
+                box-shadow:0 0 8px 0 dodgerblue;
+            }
+            .des {
+                width:100%;
+                height:100pt;
+                border: solid 2px #f5f2f0;
+                border-radius: 10px;
+                box-shadow: 1px 1px 6px 0px #2c303830;
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+
+
+
+{% endif %}
+{% endblock content %}
